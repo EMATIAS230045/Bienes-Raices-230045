@@ -8,11 +8,8 @@ para poder demostrar y aprender la creacíon y consumo de interfaces de programa
 
 |No|Fecha|Descripcion|Potenciador|Estatus|
 |--|--|--|--|--|
-|8.|17/10/2024|Nuevo Repositorio del proyecto implementado .gitignore|16|Finalizada|
+|8.|17/10/2024|Nuevo Repositorio del proyecto implementado .gitignore|1|🌟💫Activa|
 
 
 ## Autor 
-Erick Matias Granillo Mejia 
-Unidad 1
-Aplicaciones web Orientada a Servicios
-Septiembre 2024
+[T.S.U. Erick Matias Granillo Mejia  ](https://github.com/Ematias230045)
