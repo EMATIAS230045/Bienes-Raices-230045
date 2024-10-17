@@ -1,0 +1,35 @@
+{
+  "name": "mx.utxj.ti.awos.bienesraices",
+  "version": "1.0.0",
+  "description": "Proyecto de Clase para la unidad 2,De la asignatura AWOS utilizando Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EMATIAS230045/Bienes-Raices-230045.git"
+  },
+  "keywords": [
+    "MVC",
+    "Express",
+    "Sequlize",
+    "MySQL",
+    "TailwindCSS",
+    "Nodemon",
+    "NodeJS",
+    "PUG",
+    "NodeMailer",
+    "Mailtrap",
+    "JWT"
+  ],
+  "author": "T.S.U Erick Matias Granillo Mejia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EMATIAS230045/Bienes-Raices-230045/issues"
+  },
+  "homepage": "https://github.com/EMATIAS230045/Bienes-Raices-230045#readme",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
