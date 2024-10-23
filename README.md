@@ -9,12 +9,7 @@ para poder demostrar y aprender la creacíon y consumo de interfaces de programa
 |No|Fecha|Descripcion|Potenciador|Estatus|
 |--|--|--|--|--|
 |8.|17/10/2024|Nuevo Repositorio del proyecto implementado .gitignore|16|Finalizada|
-|9.|22/10/2024|creacion y control de creacion wb|16|activa|
-### Tech Stack
-![NodeJS](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white) ![Express](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
+|9.|22/10/2024|Nuevo Repositorio del proyecto implementado .gitignore|11|🌟💫Activa|
 
 ## Autor 
-Erick Matias Granillo Mejia 
-Unidad 1
-Aplicaciones web Orientada a Servicios
-Septiembre 2024
+[T.S.U. Erick Matias Granillo Mejia  ](https://github.com/Ematias230045)
