@@ -8,8 +8,9 @@ para poder demostrar y aprender la creacíon y consumo de interfaces de programa
 
 |No|Fecha|Descripcion|Potenciador|Estatus|
 |--|--|--|--|--|
-|8.|17/10/2024|Nuevo Repositorio del proyecto implementado .gitignore|16|Finalizada|
-|9.|22/10/2024|Creacion de una aplicacion utilizando Express|12|🌟💫Activa|
-|10.|22/10/2024|Operaciones basicas de Una API de los verbos|12|🌟💫Activa|
+|8.|17/10/2024|Nuevo Repositorio del proyecto implementado .gitignore|1|Finalizada|
+|9.|22/10/2024|Creacion de una aplicacion utilizando Express|12|Finalizada🤑🤑🤑👌|
+|10.|24/10/2024|Operaciones basicas de Una API de los verbos|12|Finalizada🤑🤑🤑👌|
+|11.|05/11/2024|Logeo e Implementacion de las pantallas de Registro de logeo y recupercaion de contraseña |13|🌟💫Activa|
 ## Autor 
 [T.S.U. Erick Matias Granillo Mejia  ](https://github.com/Ematias230045)
