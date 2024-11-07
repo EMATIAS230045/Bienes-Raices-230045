@@ -1,8 +1,9 @@
-div 
-  h2 Crea tu cuenta de usuario 
-  block contenido 
-      .py-10
-          h2.text-center.font-extrahold.text-2x1= page
+extends ../layout/index
+block contenido 
+     div.py-10
+          h2.text-4xl.my-10.font-extrabold.text-center Bienes 
+               span.font-normal Raices 
+          h2.text-center.text-2x1.font-extrabold= pagina 
 
           .mt-8.mx-auto.max-w-md
               .bg-white.py-8.px-4.shadow
@@ -21,5 +22,4 @@ div
                           input#name.w-full.px-3.py-2.border.border-gray-300.rounded-x1.placeholder.gray-400(type="password" placeholder="minimo 8 caracteres" name="pass2_usuario")
                       .flex.item-center.justify-between
                           a.text-gray-500.text-xs(href="/auth/login"  class="hover:underline hover:decoration-2 hover:decoration-red-600") ¿Ya tinenes cuenta? Inicia sesión
-                          a.text-gray-500.text-xs(href="/auth/passwordRecovery"  class="hover:underline hover:decoration-2 hover:decoration-red-600") Olvide mi contraseña...
                       input(class="w-full bg-indigo-600 hover:bg-red-600 text-white font bold py-3 cursor-pointer" type="submit" value="crear cuenta")
