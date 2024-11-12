@@ -15,5 +15,5 @@ const formularioLogin =(req, res) => {
                pagina: 'Recuperar Contraseña'
             })};
     
-
+            console.log
     export {formularioLogin, formularioRegister, formularioPasswordRecovery}
