@@ -2,8 +2,18 @@
 import express from'express'
 import userRoutes from './Routers/userRouters.js'
 import generalRoutes from './Routers/generalRouters.js'
+import db from './config/db.js'
 
 const app = express()
+
+//conexion de la base de datos 
+try{
+    await db.authenticate();
+    console.log('Conexion correcta a la base de datos');
+}catch(error) {
+        console.log(error);
+}
+
 
 
 //Habilitar pug
