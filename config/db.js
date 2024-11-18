@@ -1,7 +1,8 @@
 import Sequelize from 'sequelize'
-
-const db = new Sequelize(process.env.BD_NOMBRE, 'matias', '230045',{
-    host: 'localhost',
+import dotenv from 'dotenv'
+dotenv.config({path: '.env'})
+const db = new Sequelize(process.env.BD_NOMBRE, process.env.BD_USER, process.env.BD_PASS,{
+    host: process.env.BD_HOST,
     dialect: 'mysql',
     port: 3307,
     dialect: 'mysql',
