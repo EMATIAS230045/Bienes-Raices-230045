@@ -1,12 +1,13 @@
 import express, { Router } from 'express';
-import { formularioLogin } from '../controllers/userController.js';
-import { formularioRegister } from '../controllers/userController.js';
-import { formularioPasswordRecovery } from '../controllers/userController.js';
+import { formularioLogin, formularioRegister, register, confirm, formularioPasswordRecovery } from '../controllers/userController.js';
+
 const router = express.Router();
 
 router.get('/login', formularioLogin);
 router.get('/register', formularioRegister);
+router.post('/register', register);
 router.get('/passwordRecovery', formularioPasswordRecovery);
+router.get('/confirmAccout/:token', confirm);
 
 
 
