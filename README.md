@@ -12,5 +12,6 @@ para poder demostrar y aprender la creacíon y consumo de interfaces de programa
 |9.|22/10/2024|Creacion de una aplicacion utilizando Express|12|Finalizada🤑🤑🤑👌|
 |10.|24/10/2024|Operaciones basicas de Una API de los verbos|12|Finalizada🤑🤑🤑👌|
 |11.|05/11/2024|Logeo e Implementacion de las pantallas de Registro de logeo y recupercaion de contraseña |13|🌟💫Activa|
+|12.|13/11/2024|Inteegracion de funcionabilidad de creación de cuentas de usuario |13|🌟💫Activa|
 ## Autor 
 [T.S.U. Erick Matias Granillo Mejia  ](https://github.com/Ematias230045)
