@@ -1,19 +1,21 @@
-div 
-  h2 inicio de usuario 
-  block contenido 
-      .py-10
-          h2.text-center.font-extrahold.text-2x1= page
+extends ../layout/index
 
-          .mt-8.mx-auto.max-w-md
-              .bg-white.py-8.px-4.shadow
-                  form(action="").space-y-5.px-6
-                      div 
-                          label.block.text-sm.text-gray-600.mb-2.font-nold Correo Electronico:
-                          input#email.w-full.px-3.py-2.border.border-gray-300.rounded-x1.placeholder.gray-400(type="email" placeholder="ej: usuario@utgmail.com" name="correo_usuario")
-                      div 
-                          label.block.text-sm.text-gray-600.mb-2.font-nold contraseña:
-                          input#password.w-full.px-3.py-2.border.border-gray-300.rounded-x1.placeholder.gray-400(type="password" placeholder="minimo 8 caracteres" name="pass_usuario")
-                      .flex.item-center.justify-between
-                          a.text-gray-500.text-xs(href="/auth/crateAccout"  class="hover:underline hover:decoration-2 hover:decoration-red-600") ¿aún tinenes cuenta?, registrate
-                          a.text-gray-500.text-xs(href="/auth/passwordRecovery"  class="hover:underline hover:decoration-2 hover:decoration-red-600") Olvide mi contraseña...
-                      input(class="w-full bg-indigo-600 hover:bg-red-600 text-white font bold py-3 cursor-pointer" type="submit" value="crear cuenta")
+block contenido
+  div.py-10.bg-mati2
+    h2.text-4xl.my-10.font-extrabold.text-center.text-mati3 Bienes 
+      span.font-normal.text-mati4 Raices 
+    h2.text-center.text-2xl.font-extrabold.text-mati1= page
+
+    .mt-8.mx-auto.max-w-md
+      .bg-mati2.py-8.px-4.shadow
+        form(action="").space-y-5.px-6
+          div 
+            label.block.text-sm.text-mati1.mb-2.font-bold Correo Electronico:
+            input#email.w-full.px-3.py-2.border.border-gray-300.rounded-xl.placeholder-gray-400(type="email" placeholder="ej: usuario@utgmail.com" name="correo_usuario")
+          div 
+            label.block.text-sm.text-mati1.mb-2.font-bold Contraseña:
+            input#password.w-full.px-3.py-2.border.border-gray-300.rounded-xl.placeholder-gray-400(type="password" placeholder="mínimo 8 caracteres" name="pass_usuario")
+          .flex.items-center.justify-between
+            a.text-mati1.text-xs(href="/auth/register" class="hover:underline hover:decoration-2 hover:decoration-mati4") ¿No tienes cuenta? Regístrate
+            a.text-mati1.text-xs(href="/auth/passwordRecovery" class="hover:underline hover:decoration-2 hover:decoration-mati4") Olvidé mi contraseña...
+          input(class="w-full bg-mati3 hover:bg-mati4 text-mati2 font-bold py-3 cursor-pointer" type="submit" value="Iniciar sesión")

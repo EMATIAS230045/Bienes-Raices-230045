@@ -1,6 +1,31 @@
-import express from 'express';
-import { formularioLogin, formularioRegister, formularioPasswordRecovery } from '../controlles/userControlles.js';
+import express, { Router } from 'express';
+import { formularioLogin, formularioRegister, register, confirm, formularioPasswordRecovery } from '../controllers/userController.js';
+
 const router = express.Router();
+
+router.get('/login', formularioLogin);
+router.get('/register', formularioRegister);
+router.post('/register', register);
+router.get('/passwordRecovery', formularioPasswordRecovery);
+router.get('/confirmAccout/:token', confirm);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //GET
 router.get("/busquedaPorID/:id",function(request,response){
@@ -34,19 +59,4 @@ router.delete("/deleteUser/:email",function(request,response){
     response.send(`Se ha solicitado la eliminacion del uusario asociado al correo: ${request.params.email}`)
 
 })
-
-
-
-//router.get("/busquedaPorID/:id", function (request,response){
-   // response.send(`Se esta solicitando buscar al usuario con ID: ${request.params.id}, asociado al correo `)
-//})  // 2 componentes de una petición ruta, función callback 
-
-//POST
-
-//PUT
-
-router.get("/login",formularioLogin);
-router.get("/createAccount",formularioRegister);
-router.get("/passwordRecovery",formularioPasswordRecovery);
-
 export default router

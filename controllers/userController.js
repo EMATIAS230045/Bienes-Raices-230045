@@ -54,7 +54,7 @@ const formularioLogin =(req, res) => {
                     nombre: req.body.nombre,
                     email: req.body.email
                 }
-            }) 
+            })
         }
         //Almacenar un usuario 
 
