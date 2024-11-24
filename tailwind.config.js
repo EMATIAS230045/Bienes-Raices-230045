@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./views/**/*.pug'],
+  content: ['./views/**/*.pug'], // Asegúrate de que Tailwind procese tus vistas Pug
   theme: {
     extend: {
       colors: {
@@ -10,7 +10,17 @@ export default {
         mati4: '#FF6600',
         mati5: '#F5F5DC',
       },
+      animation: {
+        fadeOut: 'fadeOut 3s forwards',
+      },
+      keyframes: {
+        fadeOut: {
+          '0%': { opacity: '1' },
+          '100%': { opacity: '0' },
+        },
+      },
     },
   },
   plugins: [],
 }
+
