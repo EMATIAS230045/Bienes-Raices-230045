@@ -7,7 +7,7 @@ import generalRoutes from './Routers/generalRouters.js'
 import db from './config/db.js'
 
 const app = express()
-
+app.use('/public', express.static('public'));
 //Habilitar lectura dee datos de formularios
 app.use(express.urlencoded({extended: true}))//esta hace que pug como es muy milimalista active 
                                             //los request para poder resivir datos el servidor
@@ -25,7 +25,7 @@ app.use( csurf({cookie: true}))
         console.log(error);
 }
 
-
+ 
 
 //Habilitar pug
 app.set('view engine', 'pug')

@@ -1,37 +1,72 @@
 extends ../layout/index
+
 block contenido
   div.py-10.bg-mati2
     h2.text-4xl.my-10.font-extrabold.text-mati3.text-center Bienes 
       span.font-normal.text-mati4 Raices 
     h2.text-center.text-2xl.font-extrabold.text-mati1= pagina
-   
-   
-   
-    if errores 
-      div(class="max-w-md mx-auto my-10")
+    // Mostrar mensajes de error si existen
+    if errores
+      div.mx-auto.my-10.max-w-md
         each error in errores
-            p.bg-red-600.text-white.uppercase.text-xs.text-center.p-2.mb-1.font-bold= error.msg 
-
-
-
-
+          div.alert(
+            class="flex items-center p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 border border-blue-300 dark:bg-gray-800 dark:text-blue-400 dark:border-gray-600" 
+            role="alert"
+          )
+            svg(
+              class="flex-shrink-0 inline w-5 h-5 mr-3" 
+              aria-hidden="true" 
+              xmlns="http://www.w3.org/2000/svg" 
+              fill="currentColor" 
+              viewBox="0 0 20 20"
+            )
+              path(d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 1 1 1 1v4h1a1 1 0 0 1 0 2Z")
+            div
+              span.font-medium ¡Error!: 
+              | #{error.msg}
     .mt-8.mx-auto.max-w-md
       .bg-mati2.py-8.px-4.shadow
         form(method="POST" action="/auth/register" novalidate).space-y-5.px-6
           input(type="hidden" name="_csrf" value= csrfToken)
+
+          // Campo Nombre completo
           div 
             label.block.text-sm.text-mati1.mb-2.font-bold Nombre completo:
             input#name.w-full.px-3.py-2.border.border-gray-300.rounded-xl.placeholder-gray-400(type="text" placeholder="Ingresa tu nombre con apellidos" name="nombre" value= usuario ? usuario.nombre : '')
+
+          // Campo Correo Electrónico
           div 
-            label.block.text-sm.text-mati1.mb-2.font-bold Correo Electronico:
+            label.block.text-sm.text-mati1.mb-2.font-bold Correo Electrónico:
             input#email.w-full.px-3.py-2.border.border-gray-300.rounded-xl.placeholder-gray-400(type="email" placeholder="ej: usuario@utgmail.com" name="email" value= usuario ? usuario.email : '')
+
+          // Campo Edad
+          div 
+            label.block.text-sm.text-mati1.mb-2.font-bold Edad:
+            input#age.w-full.px-3.py-2.border.border-gray-300.rounded-xl.placeholder-gray-400(type="number" placeholder="ej: 18" name="age" value= usuario ? usuario.age : '')
+
+          // Campo Contraseña
           div 
             label.block.text-sm.text-mati1.mb-2.font-bold Contraseña:
             input#password.w-full.px-3.py-2.border.border-gray-300.rounded-xl.placeholder-gray-400(type="password" placeholder="mínimo 8 caracteres" name="password")
+
+          // Campo Confirmación de Contraseña
           div 
             label.block.text-sm.text-mati1.mb-2.font-bold Confirmación de contraseña:
-            input#name.w-full.px-3.py-2.border.border-gray-300.rounded-xl.placeholder-gray-400(type="password" placeholder="mínimo 8 caracteres" name="password_confirm")
+            input#password_confirm.w-full.px-3.py-2.border.border-gray-300.rounded-xl.placeholder-gray-400(type="password" placeholder="mínimo 8 caracteres" name="password_confirm")
+
+          // Enlaces de ayuda
           .flex.items-center.justify-between
             a.text-mati1.text-xs(href="/auth/login" class="hover:underline hover:decoration-2 hover:decoration-mati4") ¿Ya tienes cuenta? Inicia sesión
             a.text-mati1.text-xs(href="/auth/passwordRecovery" class="hover:underline hover:decoration-2 hover:decoration-mati4") Olvidé mi contraseña...
+
+          // Botón para enviar el formulario
           input(class="w-full bg-mati3 hover:bg-mati4 text-mati2 font-bold py-3 cursor-pointer" type="submit" value="Crear cuenta")
+
+  // Script para ocultar las alertas automáticamente
+  script.
+    document.addEventListener('DOMContentLoaded', () => {
+      const alerts = document.querySelectorAll('.alert');
+      setTimeout(() => {
+        alerts.forEach(alert => alert.remove());
+      }, 8000);
+    });

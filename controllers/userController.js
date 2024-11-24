@@ -22,25 +22,27 @@ const formularioLogin =(req, res) => {
         //hay dos formas en las que se pueden realizar la validacion una 
         //el enrutamineto del sitio en una instrusion antes del metodo que invoca la creacion de un nuevo usuario la otra es ponerlo en est mismo archvo con esta estructura
         await check('nombre').notEmpty().withMessage('El nombre no puede ir vacio').run(req)
-        await check('email').isEmail().withMessage('Eso no parece un email').run(req) 
+        await check('email').isEmail().withMessage('Eso no parece un email').run(req)
+        await check('age').notEmpty().withMessage('La edad no puede ir vacía')
+        .isInt({ min: 18 }).withMessage('Debes ser mayor de 18 años para registrarte').run(req)
         await check('password').isLength({min: 8}).withMessage('La contraseña debe ser una 8 caracteres minimo').run(req)
         await check('password_confirm').equals(req.body.password).withMessage('La contraseña no coincide con la anterior').run(req) 
         let resultado = validationResult(req)
 
         //verificar que el resultado este validado
-        if(!resultado.isEmpty()){
-            // Errores
+        if (!resultado.isEmpty()) {
             return res.render('auth/register', {
                 pagina: 'Crear Cuenta',
                 csrfToken: req.csrfToken(),
                 errores: resultado.array(),
-                usuario:{
+                usuario: {
                     nombre: req.body.nombre,
-                    email: req.body.email
+                    email: req.body.email,
+                    age: req.body.age
                 }
-            })
+            });
         }
-        const {nombre, email, password} = req.body
+        const {nombre, email, password,age} = req.body
 
         //Verificar que el usuario no este duplicado
         const exitsuser = await Usuario.findOne({where:  {email}})
@@ -62,6 +64,7 @@ const formularioLogin =(req, res) => {
             nombre,
             email,
             password,
+            age,
             token: (generedID())
         })
 

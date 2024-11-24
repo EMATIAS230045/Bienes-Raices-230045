@@ -1,21 +1,31 @@
 extends ../layout/index
 
 block contenido
-  div.py-10.bg-mati2
-    h2.text-4xl.my-10.font-extrabold.text-center.text-mati3 Bienes 
-      span.font-normal.text-mati4 Raices 
-    h2.text-center.text-2xl.font-extrabold.text-mati1= page
+  // Línea decorativa en la parte superior
+  div.w-full.h-2.bg-mati4
+
+  // Fondo degradado en toda la página
+  div.py-10.bg-gradient-to-r.from-mati4.to-mati3
+    h2.text-4xl.my-10.font-extrabold.text-center.text-mati3.animate__animated.animate__bounceInRight
+      | Bienes 
+      span.font-normal.text-transparent.bg-clip-text.bg-gradient-to-r.from-mati4.to-mati3 Raices 
+    h2.text-center.text-2xl.font-extrabold.text-mati1.mt-4.animate__animated.animate__bounceInRight= page
 
     .mt-8.mx-auto.max-w-md
-      .bg-mati2.py-8.px-4.shadow
-        form(action="").space-y-5.px-6
+      .bg-mati2.py-8.px-6.shadow-lg.rounded-lg
+        form(action="").space-y-6
           div 
-            label.block.text-sm.text-mati1.mb-2.font-bold Correo Electronico:
-            input#email.w-full.px-3.py-2.border.border-gray-300.rounded-xl.placeholder-gray-400(type="email" placeholder="ej: usuario@utgmail.com" name="correo_usuario")
+            label.block.text-sm.text-mati1.mb-2.font-bold Correo Electrónico:
+            input#email(type="email" placeholder="ej: usuario@utgmail.com" name="correo_usuario" 
+              class="animate__animated animate__bounce w-full px-4 py-2 border border-gray-300 rounded-xl placeholder-gray-400 focus:ring-2 focus:ring-mati4 focus:outline-none")
           div 
             label.block.text-sm.text-mati1.mb-2.font-bold Contraseña:
-            input#password.w-full.px-3.py-2.border.border-gray-300.rounded-xl.placeholder-gray-400(type="password" placeholder="mínimo 8 caracteres" name="pass_usuario")
+            input#password(type="password" placeholder="mínimo 8 caracteres" name="pass_usuario" 
+              class="animate__animated animate__bounce w-full px-4 py-2 border border-gray-300 rounded-xl placeholder-gray-400 focus:ring-2 focus:ring-mati4 focus:outline-none")
           .flex.items-center.justify-between
-            a.text-mati1.text-xs(href="/auth/register" class="hover:underline hover:decoration-2 hover:decoration-mati4") ¿No tienes cuenta? Regístrate
-            a.text-mati1.text-xs(href="/auth/passwordRecovery" class="hover:underline hover:decoration-2 hover:decoration-mati4") Olvidé mi contraseña...
-          input(class="w-full bg-mati3 hover:bg-mati4 text-mati2 font-bold py-3 cursor-pointer" type="submit" value="Iniciar sesión")
+            a(href="/auth/register" 
+              class="text-mati1 text-xs hover:underline hover:decoration-2 hover:decoration-mati4") ¿No tienes cuenta? Regístrate
+            a(href="/auth/passwordRecovery" 
+              class="text-mati1 text-xs hover:underline hover:decoration-2 hover:decoration-mati4") Olvidé mi contraseña...
+          input(type="submit" value="Iniciar sesión" 
+            class="w-full bg-mati3 hover:bg-mati4 text-mati2 font-bold py-3 rounded-lg cursor-pointer transition-all duration-300")
