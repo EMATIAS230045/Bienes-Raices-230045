@@ -13,7 +13,7 @@ app.use(express.urlencoded({extended: true}))//esta hace que pug como es muy mil
                                             //los request para poder resivir datos el servidor
                                             //conexion de la base de datos 
 //habilitar cookie parser
-                                            app.use(cookieParser())
+app.use(cookieParser())
 //habilitar CSRF
 app.use( csurf({cookie: true}))
 

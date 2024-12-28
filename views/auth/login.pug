@@ -13,7 +13,8 @@ block contenido
 
     .mt-8.mx-auto.max-w-md
       .bg-mati2.py-8.px-6.shadow-lg.rounded-lg
-        form(action="").space-y-6
+        form(method="POST" action="/auth/login").space-y-6
+        input(type="hidden" name="crsf" value=)
           div 
             label.block.text-sm.text-mati1.mb-2.font-bold Correo Electrónico:
             input#email(type="email" placeholder="ej: usuario@utgmail.com" name="correo_usuario" 

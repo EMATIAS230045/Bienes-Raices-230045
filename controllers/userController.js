@@ -1,15 +1,20 @@
 import { check, validationResult } from 'express-validator';
 import Usuario from '../models/Usuario.js';
 import { generedID } from '../helpers/token.js'
-import { emailRegistro } from '../helpers/email.js'
+import bcrypt from 'bcrypt'
+import { emailChagedPassword, emailRegistro } from '../helpers/email.js'
 import csurf from 'csurf';
+import { response } from 'express';
+import { where } from 'sequelize';
 
 const formularioLogin =(req, res) => {
         res.render('auth/login', {
             page: 'Iniciar sección'
         })
     }
+const autentication = (req, res) => {
 
+}
     const formularioRegister =(req, res) => {
         res.render('auth/register',{
             pagina: 'Crear Cuenta',
@@ -108,8 +113,105 @@ const formularioLogin =(req, res) => {
 
         } 
          
-    const formularioPasswordRecovery =(req, res) => {
-            res.render('auth/passwordRecovery',{
-               pagina: 'Recuperar Contraseña'
-            })};
-    export {formularioLogin, formularioRegister, register, confirm, formularioPasswordRecovery}
+        const formularioPasswordRecovery = (req, res) => {
+            res.render('auth/passwordRecovery', {
+                pagina: 'Recuperar Contraseña',
+                csrfToken: req.csrfToken(),
+                errores: [], // Asegúrate de que esta variable siempre se pase
+            });
+        };
+        
+        const passwordReset = async (req, res) => {
+            await check('correo_usuario')
+                .notEmpty().withMessage('El correo electrónico es obligatorio.')
+                .isEmail().withMessage('El formato del correo no es válido.')
+                .run(req);
+        
+            const result = validationResult(req);
+        
+            if (!result.isEmpty()) {
+                return res.render('auth/passwordRecovery', {
+                    pagina: 'Recuperar Contraseña',
+                    csrfToken: req.csrfToken(),
+                    errores: result.array(), // Pasar los errores si hay
+                });
+            } 
+
+            const { correo_usuario:email } = req.body
+
+            const usuario = await Usuario.findOne({where : {email}})
+
+            if(!usuario){
+                return res.render('auth/passwordRecovery', {
+                    pagina: 'Recuperar Contraseña',
+                    csrfToken: req.csrfToken(),
+                    errores: [{msg: 'El email no pertenece a ningun usuario'}]
+                });
+            }
+            //Generar Token y enviar  el email para recuperar la contraseña
+            usuario.token = generedID();
+            await usuario.save();
+
+            emailChagedPassword({
+                email: usuario.email,
+                nombre: usuario.nombre,
+                token: usuario.token
+            })
+            res.render('templates/mensaje', {
+                page: 'Restablece tu password',
+                mensaje: `Hemos enviado un email a  ${usuario.email} , con las instruciones`
+            })
+             };
+        
+
+
+const veryTokenPasswordChange = async (req, res) =>{
+    const { token } = req.params;
+    const user = await Usuario.findOne({where: {token}})
+    if(!user){
+        console.log("holaaaaa mundo")
+        return res.render('auth/confirmAccout', {
+            page : 'Restablece tu Contraseña',
+            mensaje: 'Hubo un error al verificar tu información, intentalo de nuevo',
+            error: true
+        });
+    }
+      //Mostrar fromulario de recuperacion de password 
+    res.render('auth/reset-password',{
+        pagina: 'Restablece Tu password',
+        csrfToken : req.csrfToken(),
+        errores: []
+    })
+}
+const updatePassword = async (req, res) =>{
+     //Validar el password 
+     await check('contra_usuario').isLength({min: 8}).withMessage('La contraseña debe ser una 8 caracteres minimo').run(req)
+     await check('contranew_usuario').equals(req.body.contra_usuario).withMessage('La contraseña no coincide con la anterior').run(req) 
+    let result = validationResult(req)
+
+    if(!result.isEmpty()){
+        //Errores
+        res.render('auth/reset-password',{
+            pagina: 'Restablece Tu password',
+            csrfToken : req.csrfToken(),
+            errores: result.array()
+        })
+    }
+    const { token } = req.params;
+    const {password} = req.body;
+
+    const usuario = await Usuario.findOne({where: {token}})
+
+    const salt = await bcrypt.genSalt(10);
+    usuario.password = await bcrypt.hash(usuario.password, salt);
+    usuario.token = null;
+    await usuario.save();
+    return res.render('auth/confirmAccout', {
+        page : 'Contraseña Restablecida',
+        mensaje: 'El password se puede guardar correctamente'
+    });
+
+}
+
+        //Registramos los datos en la base de datos
+    export {formularioLogin, autentication, formularioRegister, register, confirm, formularioPasswordRecovery, passwordReset, veryTokenPasswordChange, updatePassword}
